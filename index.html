@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency Converter App by Avanish</title>
+    <style>
+      * {
+        color: aliceblue;
+        font-size: 40px;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+      }
+      body {
+        background-color: black;
+      }
+      div {
+        background-color: blueviolet;
+        width: 60%;
+        padding: 10px;
+        border-radius: 20px;
+      }
+      input {
+        color: black;
+        width: 60%;
+        padding: 10px;
+        font-size: 20px;
+        border-radius: 10px;
+        border: none;
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <div>
+        <h1>Currency Converter</h1>
+        <label>Input Amount in Dollars ($)</label>
+        <br />
+        <input
+          type="number"
+          placeholder="Enter Amount in Dollars $"
+          id="dollars"
+          step="0.01"
+          oninput="convert()"
+        />
+        <br />
+        <label>Input Amount in Rupees (₹)</label>
+        <br />
+        <input
+          type="number"
+          placeholder="Enter Amount in Rupees ₹"
+          id="rupees"
+          step="0.01"
+          oninput="convert()"
+        />
+      </div>
+      <script>
+        function convert() {
+          const conversionRate = 84;
+          const rupees = document.getElementById("rupees");
+          const dollars = document.getElementById("dollars");
+
+          if (document.activeElement === rupees) {
+            dollars.value = (rupees.value / conversionRate).toFixed(2);
+          } else if (document.activeElement === dollars) {
+            rupees.value = (dollars.value * conversionRate).toFixed(2);
+          }
+        }
+      </script>
+    </center>
+  </body>
+</html>
